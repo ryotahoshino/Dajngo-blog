@@ -25,9 +25,8 @@ class CreatePostView(View):
       'form': form
     })
 
-  def get(self, request, *args, **kwargs):
+  def post(self, request, *args, **kwargs):
     form = PostForm(request.POST or None)
-
     if form.is_valid():
       post_data = Post()
       post_data.author = request.user
@@ -35,7 +34,6 @@ class CreatePostView(View):
       post_data.content = form.cleaned_data['content']
       post_data.save()
       return redirect('post_detail', post_data.id)
-
     return render(request, 'app/post_form.html', {
       'form': form
     })
