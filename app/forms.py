@@ -1,5 +1,3 @@
-from cProfile import label
-from socket import fromshare
 from django import forms
 
 class PostForm(forms.Form):
